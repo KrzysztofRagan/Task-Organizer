@@ -4,7 +4,6 @@ import os
 
 user_choice = -1
 
-
 while user_choice != 4:
   print("1. Show tasks")
   print("2. Add task")
