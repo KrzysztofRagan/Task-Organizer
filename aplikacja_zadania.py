@@ -4,11 +4,6 @@ import os
 
 user_choice = -1
 
-#def show_tasks():
-# js = json.loads(file.read())
-# print(js)
-
-
 
 while user_choice != 4:
   print("1. Show tasks")
