@@ -1,36 +1,38 @@
 from curses.ascii import isdigit
-from dataclasses import replace
-from tkinter import E
+import os
 
 
 user_choice = -1
 
 #def show_tasks():
 task_index = 0
-file = open("Zadania.txt", "r")
 # js = json.loads(file.read())
 # print(js)
 
 
 
-while user_choice != 5:
-  print("1. Pokaz zadania")
-  print("2. Dodaj zadanie")
-  print("3. Usun zadanie")
-  print("4. Zapisz zadanie")
-  print("5. Wyjdz")
+while user_choice != 4:
+  print("1. Show tasks")
+  print("2. Add task")
+  print("3. Delete task")
+  print("4. Close program")
 
-  user_choice = int(input("Wybierz liczbe: "))
+  user_choice = int(input("Choose action: "))
   
 
-  if user_choice == 1 :
-    file = open("Zadania.txt", "r")
-    for line in file.readlines():
-      print('\n')
-      print(line)
+  if user_choice == 1:
+    filesize = os.path.getsize('Zadania.txt')
+    with open("Zadania.txt", "r") as f:
+      if filesize != 0:  
+        for line in f.readlines():
+          print('\n')
+          print(line)
+      else:
+        print('There is no tasks in file!')     
+
 
   elif user_choice == 2:
-    zadanie = str(input("wpisz zadanie: "))
+    zadanie = str(input("Write task to save: "))
     file = open("Zadania.txt", "r+")
     if len(file.readlines()) > 0:
       file = open("Zadania.txt", "r+")
@@ -44,8 +46,42 @@ while user_choice != 5:
     else:
       file.write('1 {}'.format(zadanie))
     file.close()
-  #elif user_choice == 3:
-    #file = open("Zadanie.txt")
+
+
+  elif user_choice == 3:
+    correct_line_num = 1
+    with open("Zadania.txt", "r") as f:
+      lines = f.readlines()
+      f.close()
+    with open("Zadania.txt", "w") as f:
+      del_number = input("Write number of task to delete: ")
+      if len(lines) > 0:
+        for line in lines:
+            if not line.startswith(str(del_number)):
+              for i in line:
+                if line[0].isdigit():
+                  i = line.replace(line[0], str(correct_line_num))
+              correct_line_num += 1
+              f.write(i)
+              
+          
+        print('Task number {} deleted succesfully!'.format(del_number))
+      else:
+        print('There is no task to delete!')
+    # with open("zadania.txt", "r") as input:
+    #   with open("temp.txt", "w") as output:
+    #     for line in input:
+    #       if not line.strip('\n').startswith(str(del_number)):
+    #         output.write(line)
+    # os.replace('temp.txt', 'Zadania.txt')  
+    # input.close()
+    # output.close()
+
+
+#jakie aspekty:
+  #usunac linie z zadaniem
+  #zmienic pierwsze numery na prawidlowe po usunieciu
+  
 
 
 
