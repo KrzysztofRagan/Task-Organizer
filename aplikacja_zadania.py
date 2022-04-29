@@ -5,7 +5,6 @@ import os
 user_choice = -1
 
 #def show_tasks():
-task_index = 0
 # js = json.loads(file.read())
 # print(js)
 
@@ -78,10 +77,6 @@ while user_choice != 4:
     # output.close()
 
 
-#jakie aspekty:
-  #usunac linie z zadaniem
-  #zmienic pierwsze numery na prawidlowe po usunieciu
-  
 
 
 
