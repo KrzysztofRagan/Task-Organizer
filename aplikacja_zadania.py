@@ -1,6 +1,5 @@
-from curses.ascii import isdigit
 import os
-
+import tkinter as tk
 
 user_choice = -1
 
@@ -68,21 +67,3 @@ while user_choice != 4:
   else:
     print('The wrong number was selected. Please try again.')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
