@@ -61,16 +61,12 @@ while user_choice != 4:
         print('Task number {} deleted succesfully!'.format(del_number))
       else:
         print('There is no task to delete!')
-    # with open("zadania.txt", "r") as input:
-    #   with open("temp.txt", "w") as output:
-    #     for line in input:
-    #       if not line.strip('\n').startswith(str(del_number)):
-    #         output.write(line)
-    # os.replace('temp.txt', 'Zadania.txt')  
-    # input.close()
-    # output.close()
 
+  elif user_choice == 4:
+    exit()
 
+  else:
+    print('The wrong number was selected. Please try again.')
 
 
 
